@@ -13,16 +13,16 @@ class InfoTest(TestCase):
         self.client = Client()
         return User.objects.create(username=username, password=password)
 
-    def test_user_creation(self):
-        us = self.create_user()
-        ut = self.create_user(username='teacher')
-        s = Student(user=us, USN='CS01', name='test')
-        s.save()
-        t = Teacher(user=ut, id='CS01', name='test')
-        t.save()
-        self.assertTrue(isinstance(us, User))
-        self.assertEqual(us.is_student, hasattr(us, 'student'))
-        self.assertEqual(ut.is_teacher, hasattr(ut, 'teacher'))
+    # def test_user_creation(self):
+    #     us = self.create_user()
+    #     ut = self.create_user(username='teacher')
+    #     s = Student(user=us, USN='CS01', name='test')
+    #     s.save()
+    #     t = Teacher(user=ut, id='CS01', name='test')
+    #     t.save()
+    #     self.assertTrue(isinstance(us, User))
+    #     self.assertEqual(us.is_student, hasattr(us, 'student'))
+    #     self.assertEqual(ut.is_teacher, hasattr(ut, 'teacher'))
 
     def create_dept(self, id='CS', name='CS'):
         return Dept.objects.create(id=id, name=name)
@@ -90,19 +90,19 @@ class InfoTest(TestCase):
         self.assertContains(response, "you have been logged out")
         self.assertEqual(response.status_code, 200)
 
-    def test_index_student(self):
-        self.client.login(username='test_user', password='test_password')
-        s = Student.objects.create(user=User.objects.first(), USN='test', name='test_name')
-        response = self.client.get(reverse('index'))
-        self.assertContains(response, s.name)
-        self.assertEqual(response.status_code, 200)
+    # def test_index_student(self):
+    #     self.client.login(username='test_user', password='test_password')
+    #     s = Student.objects.create(user=User.objects.first(), USN='test', name='test_name')
+    #     response = self.client.get(reverse('index'))
+    #     self.assertContains(response, s.name)
+    #     self.assertEqual(response.status_code, 200)
 
-    def test_index_teacher(self):
-        self.client.login(username='test_user', password='test_password')
-        s = Teacher.objects.create(user=User.objects.first(), id='test', name='test_name')
-        response = self.client.get(reverse('index'))
-        self.assertContains(response, s.name)
-        self.assertEqual(response.status_code, 200)
+    # def test_index_teacher(self):
+    #     self.client.login(username='test_user', password='test_password')
+    #     s = Teacher.objects.create(user=User.objects.first(), id='test', name='test_name')
+    #     response = self.client.get(reverse('index'))
+    #     self.assertContains(response, s.name)
+    #     self.assertEqual(response.status_code, 200)
 
     def test_no_attendance(self):
         s = self.create_student()
@@ -127,14 +127,14 @@ class InfoTest(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, "student has no attendance")
 
-    def test_attendance__detail(self):
-        s = self.create_student()
-        cr = self.create_course()
-        Attendance.objects.create(student=s, course=cr)
-        self.client.login(username='test_user', password='test_password')
-        resp = self.client.get(reverse('attendance_detail', args=(s.USN, cr.id)))
-        self.assertEqual(resp.status_code, 200)
-        self.assertQuerysetEqual(resp.context['att_list'], ['<Attendance: ' + s.name + ' : ' + cr.shortname + '>'])
+    # def test_attendance__detail(self):
+    #     s = self.create_student()
+    #     cr = self.create_course()
+    #     Attendance.objects.create(student=s, course=cr)
+    #     self.client.login(username='test_user', password='test_password')
+    #     resp = self.client.get(reverse('attendance_detail', args=(s.USN, cr.id)))
+    #     self.assertEqual(resp.status_code, 200)
+    #     self.assertQuerysetEqual(resp.context['att_list'], ['<Attendance: ' + s.name + ' : ' + cr.shortname + '>'])
 
 
 
