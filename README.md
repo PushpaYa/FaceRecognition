@@ -35,4 +35,5 @@ Also a new admin user can be created using
 ```bash
 python manage.py createsuperuser
 ```
+For Facerecognition model setup please follow FaceDetection folder setup.txt
 
