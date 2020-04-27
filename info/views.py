@@ -16,7 +16,9 @@ def index(request):
         return render(request, 'info/homepage.html')
     return render(request, 'info/logout.html')
 
-
+'''
+This view lists attendance details of various courses in which student is enrolled.
+'''
 @login_required()
 def attendance(request, stud_id):
     stud = Student.objects.get(USN=stud_id)
@@ -31,7 +33,9 @@ def attendance(request, stud_id):
         att_list.append(a)
     return render(request, 'info/attendance.html', {'att_list': att_list})
 
-
+'''
+Returns the attendance details for given course and student.
+'''
 @login_required()
 def attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
@@ -45,7 +49,9 @@ def t_clas(request, teacher_id, choice):
     teacher1 = get_object_or_404(Teacher, id=teacher_id)
     return render(request, 'info/t_clas.html', {'teacher1': teacher1, 'choice': choice})
 
-
+'''
+Teacher view to list all the students enrolled for the class.
+'''
 @login_required()
 def t_student(request, assign_id):
     ass = Assign.objects.get(id=assign_id)
@@ -60,6 +66,9 @@ def t_student(request, assign_id):
     return render(request, 'info/t_students.html', {'att_list': att_list})
 
 
+'''
+Returns details of the class for a specific date.
+'''
 @login_required()
 def t_class_date(request, assign_id):
     now = timezone.now()
@@ -88,7 +97,9 @@ def t_attendance(request, ass_c_id):
     }
     return render(request, 'info/t_attendance.html', context)
 
-
+'''
+Edits attendance for given class id.
+'''
 @login_required()
 def edit_att(request, ass_c_id):
     assc = get_object_or_404(AttendanceClass, id=ass_c_id)
@@ -100,6 +111,9 @@ def edit_att(request, ass_c_id):
     }
     return render(request, 'info/t_edit_att.html', context)
 
+'''
+Automated image based attendance view.
+'''
 class AttendanceClassUpdateView(UpdateView):
     model = AttendanceClass
     fields = ['image']
@@ -109,6 +123,10 @@ class AttendanceClassUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('t_class_date', args=(self.object.assign.id,))
 
+'''
+Call the hosted automated face recognition api 
+and populates the student attendance for the class.
+'''
 @login_required
 def t_attendance_auto(request, ass_c_id):
     assc = get_object_or_404(AttendanceClass, id=ass_c_id)
@@ -145,6 +163,9 @@ def t_attendance_auto(request, ass_c_id):
     print(ass, cr, cl)
     return HttpResponseRedirect(reverse('t_class_date', args=(ass.id,)))
 
+'''
+Parse the submit request and mark student attendance for the class.
+'''
 @login_required()
 def confirm(request, ass_c_id):
     assc = get_object_or_404(AttendanceClass, id=ass_c_id)
@@ -173,7 +194,9 @@ def confirm(request, ass_c_id):
 
     return HttpResponseRedirect(reverse('t_class_date', args=(ass.id,)))
 
-
+'''
+Attendance details page for specific student_id and course_id.
+'''
 @login_required()
 def t_attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
@@ -210,7 +233,9 @@ def e_confirm(request, assign_id):
 
     return HttpResponseRedirect(reverse('t_clas', args=(ass.teacher_id,1)))
 
-
+'''
+Returns the summary report for given assignment id.
+'''
 @login_required()
 def t_report(request, assign_id):
     ass = get_object_or_404(Assign, id=assign_id)
