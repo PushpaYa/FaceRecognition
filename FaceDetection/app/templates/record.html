@@ -1,0 +1,24 @@
+<table border="1">
+    <thead>
+        <tr>
+            {% for col in colnames %}
+            <th style = 'color:#FF0000'>{{ col }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            {% for col in colnames %}
+            <td style = 'color:blue'>{{ record[col] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+

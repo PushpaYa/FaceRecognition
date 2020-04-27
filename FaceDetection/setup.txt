@@ -1,0 +1,22 @@
+keep images in folder train_image
+
+
+change path in FaceDetection.py  as per your pc
+
+How to run
+###############
+cd FaceDetection 
+source venv/bin/activate
+cd app
+python3 FaceDetectionApp.py 
+
+
+
+How to see results
+########################
+
+go to browser http://127.0.0.1:5011/ it will ask to upload pics .upload a pic
+
+
+
+then go to http://127.0.0.1:5011/face_recognition_frames.it will show you face with name ,if you have kept thats persons pic in train_image folder
