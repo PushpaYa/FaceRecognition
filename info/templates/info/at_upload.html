@@ -1,19 +1,16 @@
-{% extends 'info/base.html' %}
-
-{% block content %}
-    <div class="card mb-3">
-        <div class="card-header">
-              <i class="fas fa-table"></i>
-            <h3><b>Upload Attendance for automated tracking</b></h3>
-            <hr/>
-        </div>
-        <div class="card-body">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form }}
-                <br/>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-        </div>
-    </div>
+{% extends 'info/base.html' %} {% block content %}
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    <h3><b>Upload Attendance for automated tracking</b></h3>
+    <hr />
+  </div>
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} {{ form }}
+      <br />
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

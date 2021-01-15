@@ -57,7 +57,8 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   line-height: 46px;
 }
 
-.scroll-to-top:focus, .scroll-to-top:hover {
+.scroll-to-top:focus,
+.scroll-to-top:hover {
   color: white;
 }
 
@@ -100,12 +101,12 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   vertical-align: 0;
   border: 0;
   font-weight: 900;
-  content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
 }
 
 .navbar-nav .nav-item.dropdown.show .dropdown-toggle::after {
-  content: '\f107';
+  content: "\f107";
 }
 
 .navbar-nav .nav-item.dropdown.no-arrow .dropdown-toggle::after {
@@ -172,7 +173,9 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
+.sidebar .nav-item .nav-link:active,
+.sidebar .nav-item .nav-link:focus,
+.sidebar .nav-item .nav-link:hover {
   color: rgba(255, 255, 255, 0.75);
 }
 
