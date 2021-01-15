@@ -29,7 +29,7 @@ body.fixed-nav {
       padding-left: 0;
     }
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     #content-wrapper {
       padding-left: $sidebar-base-width;
     }
@@ -51,7 +51,7 @@ body.fixed-nav {
   height: 50px;
   text-align: center;
   color: $white;
-  background: fade-out($gray-800, .5);
+  background: fade-out($gray-800, 0.5);
   line-height: 46px;
   &:focus,
   &:hover {

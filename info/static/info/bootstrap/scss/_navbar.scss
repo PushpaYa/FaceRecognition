@@ -1,5 +1,4 @@
 .navbar-nav {
-
   .form-inline .input-group {
     width: 100%;
   }
@@ -19,13 +18,13 @@
           vertical-align: 0;
           border: 0;
           font-weight: 900;
-          content: '\f105';
-          font-family: 'Font Awesome 5 Free';
+          content: "\f105";
+          font-family: "Font Awesome 5 Free";
         }
       }
       &.show {
         .dropdown-toggle::after {
-          content: '\f107';
+          content: "\f107";
         }
       }
       &.no-arrow {
@@ -49,14 +48,11 @@
     }
   }
 
-  @media(min-width: 768px) {
-
+  @media (min-width: 768px) {
     .form-inline .input-group {
       width: auto;
     }
-
   }
-
 }
 
 .sidebar {
